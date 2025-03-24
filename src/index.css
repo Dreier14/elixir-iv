@@ -1,0 +1,24 @@
+/* Ensure that body and html take full height */
+html, body {
+  height: 100%; /* Full height for the page */
+  margin: 0; /* Remove default margin */
+  display: flex; /* Enable flexbox layout */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+/* Root element takes all available space */
+#root {
+  display: flex; /* Flexbox container */
+  flex-direction: column; /* Stack elements vertically */
+  flex-grow: 1; /* Take up all available space */
+}
+
+/* Footer stays at the bottom */
+footer {
+  margin-top: auto; /* Push footer to the bottom of the page */
+  padding: 20px 0;
+  background-color: #E4B7C2;/* Muted blue for the footer */
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
