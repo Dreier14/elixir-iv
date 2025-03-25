@@ -17,7 +17,7 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
     });
 
     const messageData: Record<string, string | undefined> = {
-        from: email,
+        from: req.body.email,
         to: NODE_MAILER_EMAIL,
         subject: "New IV Treatment Inquiry",
         text: `
@@ -27,7 +27,6 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
 
     Please contact me at ${email} or ${phoneNumber} to discuss further details.
 
-    Message:
     ${message}
 
     Thanks,
