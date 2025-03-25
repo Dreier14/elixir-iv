@@ -17,7 +17,7 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
     });
 
     const messageData: Record<string, string | undefined> = {
-        from: req.body.email,
+        replyTo: email,
         to: NODE_MAILER_EMAIL,
         subject: "New IV Treatment Inquiry",
         text: `
