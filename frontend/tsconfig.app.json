@@ -2,8 +2,9 @@
   "compilerOptions": {
     "outDir": "./dist",
     "module": "ESNext",
-    "target": "ES6",
+    "target": "es2017",
     "esModuleInterop": true,
+    "lib": ["dom", "es2017"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
