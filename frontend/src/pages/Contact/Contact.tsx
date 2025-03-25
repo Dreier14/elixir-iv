@@ -37,7 +37,7 @@ const Contact: React.FC = () => {
     setResponseMessage("");
 
     try {
-      await axios.post(`${process.env.BACKEND_URL}api/sendMail`, formData);
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}api/sendMail`, formData);
       setResponseMessage("Message sent successfully!");
       setFormData({ name: "", email: "", message: "", service: "", phoneNumber: "" }); // Clear form after success
     } catch (error) {
