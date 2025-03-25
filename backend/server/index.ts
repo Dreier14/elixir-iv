@@ -8,7 +8,8 @@ const app: Express = express();
 
 app.use(
     cors({
-        origin: "https://elixirivtherapy.com/",
+        origin: ["https://elixirivtherapy.com", "https://elixir-iv-backend.vercel.app"],
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     }),
     express.json()
 );
