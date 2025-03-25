@@ -16,7 +16,6 @@ const Footer: React.FC = () => {
           <Col md={6}>
             <h5 style={{ color: '#ffffff' }}>Contact Us</h5>
             <p style={{  color: '#ffffff' }} >
-              Email: 
               <a style={{
                   textDecoration: 'none', 
                   color: 'white'
