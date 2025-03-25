@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import "./Contact.css";
+
 import { options } from "../../assets/static/TherapyOptions/TherapyOptions";
+
+import "./Contact.css";
 
 const Contact: React.FC = () => {
   const location = useLocation();
@@ -35,7 +37,7 @@ const Contact: React.FC = () => {
     setResponseMessage("");
 
     try {
-      await axios.post("http://localhost:3500/api/sendMail", formData);
+      await axios.post(`${process.env.BACKEND_URL}api/sendMail`, formData);
       setResponseMessage("Message sent successfully!");
       setFormData({ name: "", email: "", message: "", service: "", phoneNumber: "" }); // Clear form after success
     } catch (error) {

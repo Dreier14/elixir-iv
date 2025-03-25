@@ -17,6 +17,7 @@
     "@mui/material": "^6.4.8",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.7",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/node": "^22.13.13",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.8.0",
