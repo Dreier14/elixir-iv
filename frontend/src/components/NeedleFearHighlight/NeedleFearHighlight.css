@@ -1,0 +1,23 @@
+.fear-container {
+  background-color: #f5f5f5;
+  padding: 20px 10px; /* Adjusted padding */
+}
+
+.fear-content {
+  max-width: 500px; /* Set a maximum width */
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+.fear-title {
+  color: #dc3545;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.fear-text {
+  text-align: left;
+  font-size: 1.2rem;
+  color: #6a6a6a;
+  line-height: 1.6;
+}
