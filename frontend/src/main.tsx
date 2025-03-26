@@ -1,20 +1,14 @@
-import { createRoot, hydrateRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';  // Import BrowserRouter
+import './index.css';
+import App from './App.tsx';
 
-const rootElement = document.getElementById('root');
-
-if (rootElement?.hasChildNodes()) {
-  hydrateRoot(
-    rootElement,
-    <BrowserRouter>
+// Wrap the App component with Router
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <Router>  {/* Router is only needed at this level */}
       <App />
-    </BrowserRouter>
-  );
-} else {
-  createRoot(rootElement!).render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
-}
+    </Router>
+  </StrictMode>
+);
