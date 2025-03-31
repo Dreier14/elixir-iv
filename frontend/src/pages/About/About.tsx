@@ -20,7 +20,6 @@ const About: React.FC<AboutProps> = ({ data }) => {
         title="About - Elixir IV"
         description="Learn more about Elixir IV for mobile IV therapy services."
         schemaData={{
-          "@context": "https://schema.org",
           "@type": "AboutPage",
           "name": "About - Elixir IV",
           "description": "Learn more about Elixir IV for mobile IV therapy services.",

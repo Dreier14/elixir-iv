@@ -14,7 +14,6 @@ const Home: React.FC = () => {
         title="Home - Elixir IV"
         description="Welcome to Elixir IV, your go-to for mobile IV therapy services."
         schemaData={{
-          "@context": "https://schema.org",
           "@type": "HomePage",
           "name": "Home - Elixir IV",
           "description": "Welcome to Elixir IV, your go-to for mobile IV therapy services.",

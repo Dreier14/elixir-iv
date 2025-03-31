@@ -55,7 +55,6 @@ const Contact: React.FC = () => {
         title="Contact Us - Elixir IV"
         description="Get in touch with Elixir IV for mobile IV therapy services."
         schemaData={{
-          "@context": "https://schema.org",
           "@type": "ContactPage",
           "name": "Contact Us - Elixir IV",
           "description": "Get in touch with Elixir IV for mobile IV therapy services.",
