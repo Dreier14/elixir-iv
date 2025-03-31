@@ -10,7 +10,7 @@ import Seo from '../../components/Seo/Seo';
 const Home: React.FC = () => {
   return (
     <div>
-      <Seo
+      {/* <Seo
         title="Home - Elixir IV"
         description="Welcome to Elixir IV, your go-to for mobile IV therapy services."
         schemaData={{
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
           "description": "Welcome to Elixir IV, your go-to for mobile IV therapy services.",
           "url": "https://elixirivtherapy.com/"
         }}
-      />
+      /> */}
       <section className="hero-section">
         <HeroSection />
       </section>
