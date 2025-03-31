@@ -1,0 +1,19 @@
+.hero-section {
+    background-color: #E4B7C2;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero-section .hero-button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .hero-section .hero-button:hover {
+    color: #E4B7C2; /* Change text color to pink on hover */
+    background-color: white; /* Optional: Change background color to white */
+  }
+  

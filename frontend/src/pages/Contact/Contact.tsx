@@ -148,7 +148,7 @@ const Contact: React.FC = () => {
               </Button>
             </div>
           </Form>
-          {responseMessage && <p className="mt-3 text-center">{responseMessage}</p>}
+          {responseMessage && <p className="mt-3 text-center" style={{ color: "#E4B7C2" }}>{responseMessage}</p>}
         </Col>
       </Row>
     </Container>
