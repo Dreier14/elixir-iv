@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { accessSync } from 'node:fs';
 import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,25 +9,60 @@ const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 3000;
 const base = process.env.BASE || '/';
 
-// Improved Vercel path resolution
-const getDistPath = () => {
-  if (isProduction && process.env.VERCEL) {
-    // Vercel puts everything in /var/task
-    return '/var/task/dist/client';
+// Improved path resolution that works for both local and Vercel
+const getClientPath = () => {
+  const possiblePaths = [
+    path.join(__dirname, '../dist/client'),       // Local development
+    '/var/task/dist/client',                     // Vercel default location
+    path.join(process.cwd(), 'dist/client')      // Fallback location
+  ];
+
+  for (const p of possiblePaths) {
+    try {
+      accessSync(p);
+      console.log(`Found client build at: ${p}`);
+      return p;
+    } catch (e) {
+      console.log(`Path not found: ${p}`);
+    }
   }
-  return path.join(__dirname, '../dist/client');
+  throw new Error(`Could not find client build in any of: ${possiblePaths.join(', ')}`);
+};
+
+const getServerPath = () => {
+  const possiblePaths = [
+    path.join(__dirname, '../dist/server/entry-server.js'),  // Local
+    '/var/task/dist/server/entry-server.js',                // Vercel
+    path.join(process.cwd(), 'dist/server/entry-server.js') // Fallback
+  ];
+
+  for (const p of possiblePaths) {
+    try {
+      accessSync(p);
+      console.log(`Found server entry at: ${p}`);
+      return p;
+    } catch (e) {
+      console.log(`Path not found: ${p}`);
+    }
+  }
+  throw new Error(`Could not find server entry in any of: ${possiblePaths.join(', ')}`);
 };
 
 const app = express();
 
-// Verify dist exists in production
+// Debugging output
+console.log('Current working directory:', process.cwd());
+console.log('__dirname:', __dirname);
+
+// Verify production build exists
 if (isProduction) {
   try {
-    await fs.access(getDistPath());
-    console.log('Found production build at:', getDistPath());
+    const clientPath = getClientPath();
+    const serverPath = getServerPath();
+    console.log('Production build verified');
   } catch (err) {
-    console.error('Production build not found at:', getDistPath());
-    console.error('Did you forget to run `npm run build`?');
+    console.error('Production build verification failed:', err.message);
+    console.error('Did you run `npm run build` before deployment?');
     process.exit(1);
   }
 }
@@ -46,19 +82,17 @@ if (!isProduction) {
   const sirv = (await import('sirv')).default;
   app.use(compression());
   
-  // Use the verified dist path
-  const clientDir = getDistPath();
+  const clientDir = getClientPath();
+  console.log(`Serving static files from: ${clientDir}`);
   app.use(base, sirv(clientDir, { 
     extensions: [],
-    dev: !isProduction,
-    // Handle missing files gracefully
     onNoMatch: (req, res) => {
       res.status(404).send('Not found');
     }
   }));
 }
 
-// SSR Handler (unchanged)
+// SSR Handler
 app.get('*', async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, '');
@@ -69,13 +103,19 @@ app.get('*', async (req, res) => {
       template = await vite.transformIndexHtml(url, template);
       render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
     } else {
-      template = await fs.readFile(path.join(getDistPath(), 'index.html'), 'utf-8');
-      render = (await import('/var/task/dist/server/entry-server.js')).render;
+      const clientPath = getClientPath();
+      template = await fs.readFile(path.join(clientPath, 'index.html'), 'utf-8');
+      
+      const serverPath = getServerPath();
+      render = (await import(serverPath)).render;
     }
 
-    const rendered = await render(url, isProduction 
-      ? JSON.parse(await fs.readFile(path.join(getDistPath(), '.vite/ssr-manifest.json'), 'utf-8'))
-      : undefined);
+    const manifestPath = path.join(getClientPath(), '.vite/ssr-manifest.json');
+    const manifest = isProduction 
+      ? JSON.parse(await fs.readFile(manifestPath, 'utf-8'))
+      : undefined;
+
+    const rendered = await render(url, manifest);
 
     const html = template
       .replace(`<!--app-head-->`, rendered.head ?? '')
@@ -84,7 +124,7 @@ app.get('*', async (req, res) => {
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html);
   } catch (e) {
     vite?.ssrFixStacktrace(e);
-    console.log(e.stack);
+    console.error('SSR Error:', e.stack);
     res.status(500).end(e.stack);
   }
 });

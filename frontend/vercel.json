@@ -4,6 +4,13 @@
     {
       "src": "api/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/client"
+      }
     }
   ],
   "routes": [
@@ -11,8 +18,5 @@
       "src": "/(.*)",
       "dest": "api/server.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
