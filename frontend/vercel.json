@@ -12,15 +12,11 @@
   ],
   "routes": [
     {
-      "src": "/_next/static/(.*)",
-      "dest": "dist/client/_next/static/$1"
-    },
-    {
       "src": "/static/(.*)",
       "dest": "dist/client/static/$1"
     },
     {
-      "src": "/(.*)", 
+      "src": "/(.*)",
       "dest": "api/server.js"
     }
   ]

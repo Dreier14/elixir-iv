@@ -1,77 +1,56 @@
-import fs from 'node:fs/promises' // NodeJS async file system module, 'interact' static files
-import express from 'express' // Express is NodeJS library for building api
+import fs from 'node:fs/promises';
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
-/**
-  This file is used to set up a NodeJS Express server to handle SSR for our React application. It dynamically selects the appropriate SSR render function and template based on the environment (development or production) and serves the rendered HTML to clients upon request.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+const app = express();
+const isProduction = process.env.NODE_ENV === 'production';
+const base = process.env.BASE || '/';
 
-  The server is set up to serve the client-side assets in production and use Vite's middleware in development. The server also reads the SSR manifest file in production to determine the appropriate render function to use.
- */
-
-// Constants
-const isProduction = process.env.NODE_ENV === 'production'
-const port = process.env.PORT || 3000
-const base = process.env.BASE || '/'
-
-// Cached production assets
-const templateHtml = isProduction
-  ? await fs.readFile('./dist/client/index.html', 'utf-8')
-  : ''
-const ssrManifest = isProduction
-  ? await fs.readFile('./dist/client/.vite/ssr-manifest.json', 'utf-8')
-  : undefined
-
-// Create http server
-const app = express()
-
-// Add Vite or respective production middlewares
-let vite
-if (!isProduction) {
-  const { createServer } = await import('vite')
-  vite = await createServer({
-    server: { middlewareMode: true },
-    appType: 'custom',
-    base,
-  })
-  app.use(vite.middlewares)
-} else {
-  const compression = (await import('compression')).default
-  const sirv = (await import('sirv')).default
-  app.use(compression())
-  app.use(base, sirv('./dist/client', { extensions: [] }))
+// Production middleware
+if (isProduction) {
+  const compression = require('compression');
+  const sirv = require('sirv');
+  app.use(compression());
+  app.use(base, sirv(path.join(__dirname, '../dist/client'), { extensions: [] }));
 }
 
-// Serve HTML
+// SSR Handler
 app.get('*', async (req, res) => {
   try {
-    const url = req.originalUrl.replace(base, '')
-
-    let template
-    let render
+    const url = req.originalUrl.replace(base, '');
+    
+    let template, render;
     if (!isProduction) {
-      // Always read fresh template in development
-      template = await fs.readFile('./index.html', 'utf-8')
-      template = await vite.transformIndexHtml(url, template)
-      render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render
+      const { createServer } = await import('vite');
+      const vite = await createServer({
+        server: { middlewareMode: true },
+        appType: 'custom',
+        base,
+      });
+      template = await fs.readFile(path.join(__dirname, '../index.html'), 'utf-8');
+      template = await vite.transformIndexHtml(url, template);
+      render = (await vite.ssrLoadModule(path.join(__dirname, '../src/entry-server.tsx'))).render;
     } else {
-      template = templateHtml
-      render = (await import('./dist/server/entry-server.js')).render
+      template = await fs.readFile(path.join(__dirname, '../dist/client/index.html'), 'utf-8');
+      const ssrManifest = await fs.readFile(path.join(__dirname, '../dist/client/.vite/ssr-manifest.json'), 'utf-8');
+      render = (await import(path.join(__dirname, '../dist/server/entry-server.js'))).render;
     }
 
-    const rendered = await render(url, ssrManifest);
-
+    const rendered = await render(url, isProduction ? JSON.parse(ssrManifest) : undefined);
+    
     const html = template
       .replace(`<!--app-head-->`, rendered.head ?? '')
-      .replace(`<!--app-html-->`, rendered.html ?? '')
+      .replace(`<!--app-html-->`, rendered.html ?? '');
 
-    res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
-  } catch (e) {
-    vite?.ssrFixStacktrace(e)
-    console.log(e.stack)
-    res.status(500).end(e.stack)
+    res.status(200).set({ 'Content-Type': 'text/html' }).send(html);
+  } catch (error) {
+    console.error('SSR Error:', error);
+    res.status(500).send('Internal Server Error');
   }
-})
+});
 
-// Start http server
-app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`)
-})
+export default app;
