@@ -8,6 +8,13 @@ const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 3000;
 const base = process.env.BASE || '/';
 
+// Vercel-specific path resolution
+const resolvePath = (relativePath) => {
+  return isProduction && process.env.VERCEL
+    ? path.join('/var/task', relativePath)
+    : path.join(__dirname, relativePath);
+};
+
 const app = express();
 
 // Middleware setup
@@ -24,7 +31,7 @@ if (!isProduction) {
   const compression = (await import('compression')).default;
   const sirv = (await import('sirv')).default;
   app.use(compression());
-  app.use(base, sirv(path.join(__dirname, '../dist/client'), { extensions: [] }));
+  app.use(base, sirv(resolvePath('../dist/client'), { extensions: [] }));
 }
 
 // SSR Handler
@@ -34,16 +41,16 @@ app.get('*', async (req, res) => {
 
     let template, render;
     if (!isProduction) {
-      template = await fs.readFile(path.join(__dirname, './index.html'), 'utf-8');
+      template = await fs.readFile(resolvePath('./index.html'), 'utf-8');
       template = await vite.transformIndexHtml(url, template);
       render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
     } else {
-      template = await fs.readFile(path.join(__dirname, '../dist/client/index.html'), 'utf-8');
-      render = (await import('../dist/server/entry-server.js')).render;
+      template = await fs.readFile(resolvePath('../dist/client/index.html'), 'utf-8');
+      render = (await import(resolvePath('../dist/server/entry-server.js'))).render;
     }
 
     const rendered = await render(url, isProduction 
-      ? JSON.parse(await fs.readFile(path.join(__dirname, '../dist/client/.vite/ssr-manifest.json'), 'utf-8'))
+      ? JSON.parse(await fs.readFile(resolvePath('../dist/client/.vite/ssr-manifest.json'), 'utf-8'))
       : undefined);
 
     const html = template
@@ -58,6 +65,5 @@ app.get('*', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
-});
+// Vercel requires module.exports for serverless functions
+export default app;
