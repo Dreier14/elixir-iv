@@ -37,7 +37,7 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
 
     transporter.sendMail(messageData, () => {
         try {
-            res.status(200).json({ name: name, text: message, email: email, service: service, phoneNumber: phoneNumber });
+            res.status(200).json({ firstName: firstName, lastName: lastName, text: message, email: email, service: service, phoneNumber: phoneNumber });
         } catch (error: unknown) {
             console.error(
                 error,
