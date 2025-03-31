@@ -16,7 +16,7 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ data }) => {
   return (
     <div style={{ flex: 1 }}>
-      {/* <Seo
+      <Seo
         title="About - Elixir IV"
         description="Learn more about Elixir IV for mobile IV therapy services."
         schemaData={{
@@ -25,7 +25,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
           "description": "Learn more about Elixir IV for mobile IV therapy services.",
           "url": "https://elixirivtherapy.com/about"
         }}
-      /> */}
+      />
       <h1
         className="mt-4"
         style={{ textAlign: 'center', color: '#D8A7B1', marginBottom: '40px' }}

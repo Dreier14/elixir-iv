@@ -22,7 +22,9 @@ const TherapyOptions: React.FC<TherapyOptionsProps> = ({ options }) => {
   const navigate = useNavigate();
 
   const handleSelectService = (title: string) => {
-    navigate(`/contact?service=${encodeURIComponent(title)}`);
+    if (typeof window !== 'undefined') {
+      navigate(`/contact?service=${encodeURIComponent(title)}`);
+    }
   };
 
   return (
@@ -32,8 +34,8 @@ const TherapyOptions: React.FC<TherapyOptionsProps> = ({ options }) => {
       </h2>
 
       <Row className="card-row mb-4">
-        {options.map((option, index) => (
-          <Col lg={4} md={6} sm={12} xs={12} key={index} className="d-flex mx-auto">
+        {options.map((option) => (
+          <Col lg={4} md={6} sm={12} xs={12} key={option.title} className="d-flex mx-auto">
             <Card className="mb-4 card-container w-100 d-flex flex-column">
               <Card.Img variant="top" className="card-img" src={option.imageUrl} />
               <Card.Body className="d-flex flex-column">
@@ -44,8 +46,8 @@ const TherapyOptions: React.FC<TherapyOptionsProps> = ({ options }) => {
                 <div className="card-includes mt-4">
                   <strong>Includes:</strong>
                   <ul>
-                    {option.includes.map((item, idx) => (
-                      <li key={idx}>{item}</li>
+                    {option.includes.map((item) => (
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </div>

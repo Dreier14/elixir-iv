@@ -50,10 +50,6 @@ const getServerPath = () => {
 
 const app = express();
 
-// Debugging output
-console.log('Current working directory:', process.cwd());
-console.log('__dirname:', __dirname);
-
 // Verify production build exists
 if (isProduction) {
   try {
@@ -115,7 +111,7 @@ app.get('*', async (req, res) => {
       ? JSON.parse(await fs.readFile(manifestPath, 'utf-8'))
       : undefined;
 
-    const rendered = await render(url, manifest);
+      const rendered = await render({ path: url, manifest: manifest });
 
     const html = template
       .replace(`<!--app-head-->`, rendered.head ?? '')
@@ -128,5 +124,12 @@ app.get('*', async (req, res) => {
     res.status(500).end(e.stack);
   }
 });
+
+// Only start the server if not in Vercel environment
+if (process.env.VERCEL !== '1') {
+    app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}`);
+    });
+  }
 
 export default app;

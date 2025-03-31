@@ -51,7 +51,7 @@ const Contact: React.FC = () => {
 
   return (
     <Container className="contact-container">
-      {/* <Seo
+      <Seo
         title="Contact Us - Elixir IV"
         description="Get in touch with Elixir IV for mobile IV therapy services."
         schemaData={{
@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
           "description": "Get in touch with Elixir IV for mobile IV therapy services.",
           "url": "https://elixirivtherapy.com/contact"
         }}
-      /> */}
+      />
       <h1 className="text-center mt-4 mb-4" style={{ color: "#E4B7C2" }}>
         Contact Us
       </h1>
@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
               <Form.Label style={{ color: "#E4B7C2" }}>First Name</Form.Label>
               <Form.Control
                 type="text"
-                name="name"
+                name="firstName"
                 placeholder="Enter your first name"
                 value={formData.firstName}
                 onChange={handleChange}
@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
               <Form.Label style={{ color: "#E4B7C2" }}>Last Name</Form.Label>
               <Form.Control
                 type="text"
-                name="name"
+                name="lastName"
                 placeholder="Enter your last name"
                 value={formData.lastName}
                 onChange={handleChange}

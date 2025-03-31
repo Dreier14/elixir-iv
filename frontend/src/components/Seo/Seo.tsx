@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 interface SeoProps {
   title: string;
   description: string;
+  keywords?: string;
   schemaData?: object;
 }
 

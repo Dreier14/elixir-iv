@@ -6,22 +6,22 @@ const Navigation: React.FC = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+    if (menuRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        !(event.target as Element).closest('.navbar-toggler')) {
       setIsOpen(false);
     }
   }, []);
-
+  
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
     }
-
+    // Cleanup function that runs when component unmounts or before re-running the effect
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, handleClickOutside]);
+  }, [handleClickOutside, isOpen]);
 
   return (
     <Navbar bg="light" expand="lg">

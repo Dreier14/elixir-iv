@@ -1,6 +1,6 @@
-import React from "react";
 import { StaticRouter } from "react-router-dom/server";
 import { renderToString } from 'react-dom/server';
+import { HelmetProvider } from 'react-helmet-async';
 import { Router } from './router';
 
 interface IRenderProps { 
@@ -8,19 +8,37 @@ interface IRenderProps {
 }
 
 export function render({ path }: IRenderProps) {
+  // Create a helmet context for SSR
+  const helmetContext: any = {};
+
+  // Render the app to a string
   const appHtml = renderToString(
-    <React.StrictMode>
+    <HelmetProvider context={helmetContext}>
       <StaticRouter location={path}>
         <Router />
       </StaticRouter>
-    </React.StrictMode>
+    </HelmetProvider>
   );
 
-  return {
-    html: appHtml,
-    head: `
-      <title>ELIXIR IV</title>
-      <meta name="description" content="Your trusted IV therapy provider">
-    `
-  };
+
+  const { helmet } = helmetContext;
+
+  // Construct the full HTML with the rendered app and helmet meta data
+  const html = `
+    <!DOCTYPE html>
+    <html ${helmet?.htmlAttributes.toString()}>
+      <head>
+        ${helmet?.title.toString()}
+        ${helmet?.meta.toString()}
+        ${helmet?.link.toString()}
+        <!-- Add other tags (e.g., styles, scripts) here -->
+      </head>
+      <body>
+        <div id="root">${appHtml}</div>
+        <!-- Add your JS bundles/scripts here -->
+      </body>
+    </html>
+  `;
+
+  return { html };
 }
