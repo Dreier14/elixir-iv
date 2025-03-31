@@ -4,7 +4,7 @@ import "dotenv/config";
 
 export const sendMail = (req: Request, res: Response, next: NextFunction) => {
     const { NODE_MAILER_EMAIL, NODE_MAILER_PASS } = process.env;
-    const { name, email, message, service, phoneNumber } = req.body;
+    const { firstName, lastName, email, message, service, phoneNumber } = req.body;
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -23,14 +23,14 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
         text: `
     To Elixir IV,
 
-    My name is ${name}, and I am interested in the ${service} service.
+    My name is ${firstName} ${lastName}, and I am interested in ${service? "the " + service + " service" : "learning about more therapies"}.
 
     Please contact me at ${email} or ${phoneNumber} to discuss further details.
 
     ${message}
 
     Thanks,
-    ${name}
+    ${firstName} ${lastName}
         `,
     };
     

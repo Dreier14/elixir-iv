@@ -6,6 +6,7 @@ import axios from "axios";
 import { options } from "../../assets/static/TherapyOptions/TherapyOptions";
 
 import "./Contact.css";
+import Seo from "../../components/Seo/Seo";
 
 const Contact: React.FC = () => {
   const location = useLocation();
@@ -13,7 +14,8 @@ const Contact: React.FC = () => {
   const selectedService = queryParams.get("service") || "";
 
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     message: "",
     service: selectedService,
@@ -39,7 +41,7 @@ const Contact: React.FC = () => {
     try {
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}api/sendMail`, formData);
       setResponseMessage("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "", service: "", phoneNumber: "" }); // Clear form after success
+      setFormData({ firstName: "", lastName: "", email: "", message: "", service: "", phoneNumber: "" }); // Clear form after success
     } catch (error) {
       setResponseMessage("Error sending message. Please try again later.");
     } finally {
@@ -49,6 +51,17 @@ const Contact: React.FC = () => {
 
   return (
     <Container className="contact-container">
+      <Seo
+        title="Contact Us - Elixir IV"
+        description="Get in touch with Elixir IV for mobile IV therapy services."
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact Us - Elixir IV",
+          "description": "Get in touch with Elixir IV for mobile IV therapy services.",
+          "url": "https://elixirivtherapy.com/contact"
+        }}
+      />
       <h1 className="text-center mt-4 mb-4" style={{ color: "#E4B7C2" }}>
         Contact Us
       </h1>
@@ -56,12 +69,23 @@ const Contact: React.FC = () => {
         <Col xs={12} sm={12} md={12}>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">
-              <Form.Label style={{ color: "#E4B7C2" }}>Full Name</Form.Label>
+              <Form.Label style={{ color: "#E4B7C2" }}>First Name</Form.Label>
               <Form.Control
                 type="text"
                 name="name"
-                placeholder="Enter your name"
-                value={formData.name}
+                placeholder="Enter your first name"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label style={{ color: "#E4B7C2" }}>Last Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                placeholder="Enter your last name"
+                value={formData.lastName}
                 onChange={handleChange}
                 required
               />
@@ -112,7 +136,6 @@ const Contact: React.FC = () => {
                 placeholder="Your message"
                 value={formData.message}
                 onChange={handleChange}
-                required
               />
             </Form.Group>
 

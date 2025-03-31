@@ -5,10 +5,22 @@ import IVRecommendationPrompt from '../../components/IVRecommendationPrompt/IVRe
 import NeedleFearHighlight from '../../components/NeedleFearHighlight/NeedleFearHighlight';
 import TherapyOptions from '../../components/TherapyOptions/TherapyOptions';
 import { options } from '../../assets/static/TherapyOptions/TherapyOptions';
+import Seo from '../../components/Seo/Seo';
 
 const Home: React.FC = () => {
   return (
     <div>
+      <Seo
+        title="Home - Elixir IV"
+        description="Welcome to Elixir IV, your go-to for mobile IV therapy services."
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "HomePage",
+          "name": "Home - Elixir IV",
+          "description": "Welcome to Elixir IV, your go-to for mobile IV therapy services.",
+          "url": "https://elixirivtherapy.com/"
+        }}
+      />
       <section className="hero-section">
         <HeroSection />
       </section>

@@ -7,11 +7,13 @@ import Error from '../pages/Error/Error';
 import { aboutSections } from '../assets/static/AboutSection/AboutSection';
 import Navigation from '../components/Navigation/Navigation';
 import Footer from '../components/Footer/Footer';
+import ScrollToTop from '../components/Universal/ScrollToTop';
 
 const Router: React.FC = () => {
   return (
     <>
         <Navigation />
+        <ScrollToTop />
         <Routes>
             <Route index path="/" element={<Home />} />
             <Route path="/about" element={<About data={aboutSections} />} />

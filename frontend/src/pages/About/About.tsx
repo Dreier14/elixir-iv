@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import './About.css'; // Make sure to add a custom stylesheet if needed
+import Seo from '../../components/Seo/Seo';
 
 interface AboutCardData {
   title: string;
@@ -15,6 +16,17 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ data }) => {
   return (
     <div style={{ flex: 1 }}>
+      <Seo
+        title="About - Elixir IV"
+        description="Learn more about Elixir IV for mobile IV therapy services."
+        schemaData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "About - Elixir IV",
+          "description": "Learn more about Elixir IV for mobile IV therapy services.",
+          "url": "https://elixirivtherapy.com/about"
+        }}
+      />
       <h1
         className="mt-4"
         style={{ textAlign: 'center', color: '#D8A7B1', marginBottom: '40px' }}

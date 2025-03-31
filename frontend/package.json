@@ -17,6 +17,7 @@
     "@headlessui/react": "^2.2.0",
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
+    "@types/react-helmet-async": "^1.0.1",
     "@vercel/node": "^3.2.0",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
@@ -27,6 +28,7 @@
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
+    "react-helmet-async": "^2.0.5",
     "react-router-dom": "^6.20.0",
     "sirv": "^3.0.1"
   },
