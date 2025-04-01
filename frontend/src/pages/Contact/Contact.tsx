@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import { FaPaperPlane } from 'react-icons/fa';
 import axios from "axios";
 
 import { options } from "../../assets/static/TherapyOptions/TherapyOptions";
@@ -50,9 +51,9 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#FFF6F5", width: "100%", minHeight: "100vh" }}>
-      <h1 style={{ color:  "#E4B7C2", margin: 0, fontSize: '52px', textAlign: "center" }}>Contact Us</h1>
-      <Container className="contact-container mt-4">
+    <div className="contact-container">
+      <h1 className="contact-title">Contact Us</h1>
+      <Container className="mt-4">
         <Seo
           title="Contact Us - Elixir IV"
           description="Get in touch with Elixir IV for mobile IV therapy services."
@@ -67,7 +68,7 @@ const Contact: React.FC = () => {
           <Col xs={12} sm={12} md={12}>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label style={{ color: "#E4B7C2" }}>First Name</Form.Label>
+                <Form.Label>First Name</Form.Label>
                 <Form.Control
                   type="text"
                   name="firstName"
@@ -78,7 +79,7 @@ const Contact: React.FC = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicLastName">
-                <Form.Label style={{ color: "#E4B7C2" }}>Last Name</Form.Label>
+                <Form.Label>Last Name</Form.Label>
                 <Form.Control
                   type="text"
                   name="lastName"
@@ -90,7 +91,7 @@ const Contact: React.FC = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label style={{ color: "#E4B7C2" }}>Email address</Form.Label>
+                <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
                   name="email"
@@ -102,7 +103,7 @@ const Contact: React.FC = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPhone">
-                <Form.Label style={{ color: "#E4B7C2" }}>Phone number</Form.Label>
+                <Form.Label>Phone number</Form.Label>
                 <Form.Control
                   type="text"
                   name="phoneNumber"
@@ -114,7 +115,7 @@ const Contact: React.FC = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicService">
-                <Form.Label style={{ color: "#E4B7C2" }}>Select a Service</Form.Label>
+                <Form.Label>Select a Service</Form.Label>
                 <Form.Control as="select" name="service" value={formData.service} onChange={handleChange}>
                   <option value="">Select a service...</option>
                   {options.map((option) => (
@@ -126,7 +127,7 @@ const Contact: React.FC = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicMessage">
-                <Form.Label style={{ color: "#E4B7C2" }}>Message</Form.Label>
+                <Form.Label>Message</Form.Label>
                 <Form.Control
                   as="textarea"
                   name="message"
@@ -140,14 +141,14 @@ const Contact: React.FC = () => {
               <div className="d-grid">
                 <Button
                   type="submit"
-                  style={{ backgroundColor: "#E4B7C2", border: "none", padding: "10px" }}
+                  className="submit-button"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Sending..." : "Submit"}
+                  {isSubmitting ? "Sending..." : <>Submit <FaPaperPlane /></>}
                 </Button>
               </div>
             </Form>
-            {responseMessage && <p className="mt-3 text-center" style={{ color: "#E4B7C2" }}>{responseMessage}</p>}
+            {responseMessage && <p className="response-message">{responseMessage}</p>}
           </Col>
         </Row>
       </Container>

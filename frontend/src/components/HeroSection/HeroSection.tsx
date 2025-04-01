@@ -18,10 +18,10 @@ const HeroSection: React.FC = () => {
         {/* Button Group */}
         <div className="button-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
           <Button href="sms:+14804204359" variant="outline-light" className="hero-button" style={{ color: "#FFF6F5" }}>
-            <FaSms />Text Us
+            <FaSms /> Text Us
           </Button>
           <Button href="tel:+14804204359" variant="outline-light" className="hero-button" style={{ color: "#FFF6F5" }}>
-            <FaPhoneAlt /> Call Us
+            <FaPhoneAlt /> Call Us 
           </Button>
         </div>
       </div>

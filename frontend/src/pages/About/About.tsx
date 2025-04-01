@@ -15,7 +15,7 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ data }) => {
   return (
-    <div style={{ flex: 1, backgroundColor: "#FFF6F5", width: "100%", minHeight: "100vh" }}>
+    <div className="about-container">
       <Seo
         title="About - Elixir IV"
         description="Learn more about Elixir IV for mobile IV therapy services."
@@ -26,16 +26,16 @@ const About: React.FC<AboutProps> = ({ data }) => {
           "url": "https://elixirivtherapy.com/about"
         }}
       />
-      <h1 style={{ color: "#E4B7C2", margin: 0, fontSize: '52px', textAlign: "center" }}>About Us</h1>
+      <h1 className="about-title">About Us</h1>
       <Container className="mt-4">
         <Row className="card-row">
           {data.map((item, index) => (
             <Col md={4} sm={12} className="animate-fade-in" key={index}>
               <Card className="mb-4 card-container">
-                <Card.Body className="card-body" style={{backgroundColor: '#E4B7C2', borderRadius: '5px' }}>
-                  <Card.Title style={{ color: '#FFF6F5', fontSize: '32px' }}>{item.title}</Card.Title>
-                  <Card.Img variant="top" className="card-img" style={{ height: "450px" }} src={item.imageUrl} />
-                  <Card.Text className="mt-4"  style={{ color: '#FFF6F5' }}>{item.text}</Card.Text>
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title">{item.title}</Card.Title>
+                  <Card.Img variant="top" className="card-img" src={item.imageUrl} />
+                  <Card.Text className="mt-4 card-text">{item.text}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>

@@ -112,7 +112,7 @@ const IVRecommendationPrompt: React.FC = () => {
         onChange={(e) => setUserFeeling(e.target.value)}
         className="form-control mb-4"
       />
-      <Button onClick={handleUserFeeling} className="btn btn-primary" style={{ backgroundColor: '#E4B7C2', borderColor: '#E4B7C2' }}>
+      <Button onClick={handleUserFeeling} className="btn btn-primary" style={{ backgroundColor: '#E4B7C2', borderColor: '#E4B7C2', fontWeight: 'bold'}}>
         Get Recommendations
       </Button>
 

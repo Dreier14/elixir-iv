@@ -37,6 +37,7 @@
     padding: 12px 30px;
     font-size: 1.1rem;
     transition: color 0.3s ease, background-color 0.3s ease;
+    font-weight: bold !important;
   }
   
   .hero-button:hover {

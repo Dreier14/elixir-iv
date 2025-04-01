@@ -1,19 +1,66 @@
+.therapy-options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.therapy-options-title {
+  text-align: center;
+  color: #E4B7C2;
+  margin-bottom: 40px;
+  font-size: 42px;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
+.card-img {
+  height: 450px;
+}
+
 .card-body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  background-color: #E4B7C2;
+  color: #FFF6F5 !important;
+}
+
+.card-title {
+  color: #E4B7C2;
+  font-size: 32px;
 }
 
 .card-text {
-  flex-grow: 1; /* Allows the description to take up space */
+  color: #FFF6F5;
 }
 
 .card-includes {
   margin-top: auto !important; /* Forces it to the bottom */
+}
+
+.includes-title {
+  color: #FFF6F5;
+}
+
+.includes-list {
+  color: #FFF6F5;
+}
+
+.card-footer {
+  background-color: #E4B7C2 !important;
+  border-top: none !important;
+}
+
+.cost-text {
+  color: #FFF6F5;
+}
+
+.hero-button {
+  color: #FFF6F5;
+  margin-bottom: 10px;
+  font-weight: bold !important;
 }
