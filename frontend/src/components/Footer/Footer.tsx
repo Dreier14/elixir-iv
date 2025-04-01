@@ -1,38 +1,34 @@
-// src/components/Footer.tsx
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import './Footer.css';
 
 const Footer: React.FC = () => {
   return (
-    <footer style={{ marginTop: 'auto', backgroundColor: '#E4B7C2', color: 'white' }}>
+    <footer className="footer">
       <Container>
         <Row>
-        <Col md={6}>
-            <p >
-              <a href="sms:14804204359" style={{ color: '#FFF6F5', textDecoration: 'none' }}>
+          <Col md={6}>
+            <p>
+              <a href="sms:14804204359" aria-label="Send us a text message" className="footer-link">
                 <strong>Text Us</strong>
               </a>
             </p>
-            <p >
-              <a href="tel:14804204359" style={{ color: '#FFF6F5', textDecoration: 'none' }}>
+            <p>
+              <a href="tel:14804204359" aria-label="Call us for mobile IV therapy" className="footer-link">
                 <strong>Call Us</strong>
               </a>
             </p>
-            <p style={{  color: '#FFF6F5' }} >
-              <a style={{
-                  textDecoration: 'none', 
-                  color: '#FFF6F5'
-                }} href="mailto:elixirinfusiontherapy@gmail.com"
-              >
-                <strong>
-                  Email Us
-                </strong>
+            <p>
+              <a href="mailto:elixirinfusiontherapy@gmail.com" aria-label="Email us for IV therapy services" className="footer-link">
+                <strong>Email Us</strong>
               </a>
             </p>
           </Col>
           <Col md={6}>
-            <p style={{ color: '#FFF6F5', fontFamily: "system-ui" }}>Your trusted mobile IV therapy provider in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa. Hydration, wellness, and vitamin therapy at your doorstep.</p>
-            <h5 style={{ color: '#FFF6F5', fontFamily: "system-ui", letterSpacing: "5px"}}>ELIXIR IV</h5>
+            <p className="footer-description">
+              <strong>Mobile IV Therapy</strong> in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa. Get hydration, wellness, and vitamin therapy delivered to your home.
+            </p>
+            <h5 className="footer-title">ELIXIR IV</h5>
           </Col>
         </Row>
       </Container>
