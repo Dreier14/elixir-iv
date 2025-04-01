@@ -3,6 +3,8 @@ import { accessSync } from 'node:fs';
 import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import compression from 'compression';
+import sirv from 'sirv';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProduction = process.env.NODE_ENV === 'production';
@@ -74,9 +76,9 @@ if (!isProduction) {
   });
   app.use(vite.middlewares);
 } else {
-  const compression = (await import('compression')).default;
-  const sirv = (await import('sirv')).default;
-  app.use(compression());
+  app.use(compression({
+    brotli: { enabled: true, zlib: {} } // Enable Brotli compression in production
+  }));
   
   const clientDir = getClientPath();
   console.log(`Serving static files from: ${clientDir}`);
@@ -84,12 +86,18 @@ if (!isProduction) {
     extensions: [],
     onNoMatch: (req, res) => {
       res.status(404).send('Not found');
+    },
+    setHeaders: (res, path) => {
+      if (path.endsWith('.css') || path.endsWith('.js')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      }
     }
   }));
 }
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Serving robots.txt
 app.use('/robots.txt', (req, res) => {
   res.type('text/plain');
   res.send(`User-agent: *
@@ -98,11 +106,16 @@ app.use('/robots.txt', (req, res) => {
   Sitemap: https://elixirivtherapy.com/sitemap.xml`);
 });
 
-// SSR Handler
+// SSR Handler with cache
+const cache = new Map();
 app.get('*', async (req, res) => {
-  try {
-    const url = req.originalUrl.replace(base, '');
+  const url = req.originalUrl.replace(base, '');
 
+  if (cache.has(url)) {
+    return res.status(200).send(cache.get(url));
+  }
+
+  try {
     let template, render;
     if (!isProduction) {
       template = await fs.readFile(path.join(__dirname, './index.html'), 'utf-8');
@@ -111,7 +124,6 @@ app.get('*', async (req, res) => {
     } else {
       const clientPath = getClientPath();
       template = await fs.readFile(path.join(clientPath, 'index.html'), 'utf-8');
-      
       const serverPath = getServerPath();
       render = (await import(serverPath)).render;
     }
@@ -121,12 +133,13 @@ app.get('*', async (req, res) => {
       ? JSON.parse(await fs.readFile(manifestPath, 'utf-8'))
       : undefined;
 
-      const rendered = await render({ path: url, manifest: manifest });
+    const rendered = await render({ path: url, manifest: manifest });
 
     const html = template
       .replace(`<!--app-head-->`, rendered.head ?? '')
       .replace(`<!--app-html-->`, rendered.html ?? '');
 
+    cache.set(url, html); // Cache the rendered page for future requests
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html);
   } catch (e) {
     vite?.ssrFixStacktrace(e);
@@ -137,9 +150,9 @@ app.get('*', async (req, res) => {
 
 // Only start the server if not in Vercel environment
 if (process.env.VERCEL !== '1') {
-    app.listen(port, () => {
-      console.log(`Server running at http://localhost:${port}`);
-    });
-  }
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
 
 export default app;
