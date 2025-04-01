@@ -7,21 +7,32 @@ const Footer: React.FC = () => {
     <footer style={{ marginTop: 'auto', backgroundColor: '#E4B7C2', color: 'white' }}>
       <Container>
         <Row>
-          <Col md={6}>
-            <h5 style={{ color: '#ffffff', fontFamily: "system-ui", letterSpacing: "5px"}}>ELIXIR IV</h5>
-            <p style={{  color: '#ffffff'  }}>
-              Your health and wellness, delivered to your door. Professional IV therapy, at your convenience.
+        <Col md={6}>
+            <p >
+              <a href="sms:14804204359" style={{ color: '#FFF6F5', textDecoration: 'none' }}>
+                <strong>Text Us</strong>
+              </a>
+            </p>
+            <p >
+              <a href="tel:14804204359" style={{ color: '#FFF6F5', textDecoration: 'none' }}>
+                <strong>Call Us</strong>
+              </a>
+            </p>
+            <p style={{  color: '#FFF6F5' }} >
+              <a style={{
+                  textDecoration: 'none', 
+                  color: '#FFF6F5'
+                }} href="mailto:elixirinfusiontherapy@gmail.com"
+              >
+                <strong>
+                  Email Us
+                </strong>
+              </a>
             </p>
           </Col>
           <Col md={6}>
-            <h5 style={{ color: '#ffffff' }}>Contact Us</h5>
-            <p style={{  color: '#ffffff' }} >
-              <a style={{
-                  textDecoration: 'none', 
-                  color: 'white'
-                }} href="mailto:elixirinfusiontherapy@gmail.com"
-              >elixirinfusiontherapy@gmail.com</a>
-            </p>
+            <p style={{ color: '#FFF6F5', fontFamily: "system-ui" }}>Your trusted mobile IV therapy provider in Scottsdale, Tempe, and Phoenix. Hydration, wellness, and vitamin therapy at your doorstep.</p>
+            <h5 style={{ color: '#FFF6F5', fontFamily: "system-ui", letterSpacing: "5px"}}>ELIXIR IV</h5>
           </Col>
         </Row>
       </Container>

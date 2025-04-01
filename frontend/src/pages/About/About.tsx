@@ -29,7 +29,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
       
       {/* Full-width pink band for the heading */}
       <div style={{ backgroundColor: "#E4B7C2", width: "100%", padding: "20px 0", textAlign: "center" }}>
-        <h1 style={{ color: "#FFF6F5", margin: 0, fontSize: '42px' }}>About Us</h1>
+        <h1 style={{ color: "#FFF6F5", margin: 0, fontSize: '52px' }}>About Us</h1>
       </div>
 
       <Container className="mt-4">
@@ -37,7 +37,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
           {data.map((item, index) => (
             <Col md={4} sm={12} className="animate-fade-in" key={index}>
               <Card className="mb-4 card-container">
-                <Card.Body className="card-body" style={{backgroundColor: '#E4B7C2'}}>
+                <Card.Body className="card-body" style={{backgroundColor: '#E4B7C2', borderRadius: '5px' }}>
                   <Card.Title style={{ color: '#FFF6F5', fontSize: '32px' }}>{item.title}</Card.Title>
                   <Card.Img variant="top" className="card-img" style={{ height: "500px" }} src={item.imageUrl} />
                   <Card.Text className="mt-4"  style={{ color: '#FFF6F5' }}>{item.text}</Card.Text>
