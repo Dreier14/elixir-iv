@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       <Container>
         <Row>
           <Col md={6}>
-            <h5 style={{ color: '#ffffff' }}>ELIXIR IV</h5>
+            <h5 style={{ color: '#ffffff', fontFamily: "system-ui", letterSpacing: "5px"}}>ELIXIR IV</h5>
             <p style={{  color: '#ffffff'  }}>
               Your health and wellness, delivered to your door. Professional IV therapy, at your convenience.
             </p>

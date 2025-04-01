@@ -1,19 +1,59 @@
 .hero-section {
     background-color: #E4B7C2;
     color: white;
-    padding: 100px 20px;
+    padding: 60px 20px; /* Reduced padding for less height */
     text-align: center;
     transition: background-color 0.3s ease;
   }
   
-  .hero-section .hero-button {
+  .image-band {
+    width: 100vw; /* Full width of the viewport */
+    background-color: #FFF6F5; /* Set the background color of the band */
+    display: flex; /* Flexbox to center the image */
+    justify-content: center; /* Center image horizontally */
+    margin-left: calc(-50vw + 50%); /* This ensures the white band stretches across the full width */
+  }
+  
+  /* Move the h1 up using negative margin */
+  .hero-section h1 {
+    margin-bottom: 30px; /* Add space below the h1 */
+    margin-top: -90px; /* Negative margin to move h1 upwards */
+    font-family: system-ui;
+    letter-spacing: 5px;
+  }
+  
+  .text-button-group {
+    margin-top: 60px;
+    margin-bottom: -60px;
+  }
+  
+  .hero-logo {
+    width: 60%; /* Default size for mobile */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .hero-button {
+    margin-top: 20px;
     padding: 12px 30px;
     font-size: 1.1rem;
     transition: color 0.3s ease, background-color 0.3s ease;
   }
   
-  .hero-section .hero-button:hover {
-    color: #E4B7C2; /* Change text color to pink on hover */
-    background-color: white; /* Optional: Change background color to white */
+  .hero-button:hover {
+    color: #E4B7C2 !important;
+    background-color: #FFF6F5 !important;
   }
   
+  /* Media Queries for Tablet and Desktop */
+  @media (min-width: 768px) {
+    .hero-logo {
+      width: 35%;
+
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-logo {
+      width: 25%;
+  }
+}

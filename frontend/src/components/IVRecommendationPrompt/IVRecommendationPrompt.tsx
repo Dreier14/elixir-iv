@@ -103,8 +103,8 @@ const IVRecommendationPrompt: React.FC = () => {
   };
 
   return (
-    <Container className="text-center my-5">
-      <h2 className="mb-4">How are you feeling today?</h2>
+    <Container className="text-center my-5" style={{backgroundColor: "#FFF6F5" }}>
+      <h2 className="mb-4" style={{color: '#E4B7C2'}}>How are you feeling today?</h2>
       <input
         type="text"
         placeholder="Describe your symptoms or feelings (e.g., tired, headache, stressed)"

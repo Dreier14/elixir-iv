@@ -9,10 +9,11 @@ import Seo from '../../components/Seo/Seo';
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <div style={{backgroundColor: "#FFF6F5" }}>
       <Seo
         title="Home - Elixir IV"
         description="Welcome to Elixir IV, your go-to for mobile IV therapy services."
+        keywords="IV therapy, mobile IV therapy, hydration therapy, vitamin infusion, wellness, IV drip, IV treatment, IV fluids, IV nutrients"
         schemaData={{
           "@type": "HomePage",
           "name": "Home - Elixir IV",

@@ -24,10 +24,16 @@ const Navigation: React.FC = () => {
   }, [handleClickOutside, isOpen]);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar style={{ backgroundColor: "#FFF6F5" }} expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/" style={{ color: "#E4B7C2" }}>
-          ELIXIR IV
+        <Navbar.Brand href="/" style={{ color: "#E4B7C2", fontFamily: "system-ui", letterSpacing: "5px" }}>
+          <img 
+            src="/images/ElixirIVLogo.png" // Replace with your logo path
+            alt="Logo"
+            style={{ height: "40px", marginRight: "10px" }}
+            className="d-block d-lg-none"
+          />
+          <span className="d-none d-lg-block">ELIXIR IV</span> {/* Show text only on large screens */}
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
@@ -35,17 +41,17 @@ const Navigation: React.FC = () => {
         />
         <Navbar.Collapse
           id="basic-navbar-nav"
-          ref={menuRef} // Apply ref to collapsible menu
-          in={isOpen} // Ensure state controls the menu visibility
+          ref={menuRef}
+          in={isOpen}
         >
           <Nav className="ml-auto">
-            <Nav.Link href="/" style={{ color: "#E4B7C2" }}>
+            <Nav.Link href="/" style={{ color: "#E4B7C2", fontFamily: "system-ui" }}>
               Home
             </Nav.Link>
-            <Nav.Link href="/about" style={{ color: "#E4B7C2" }}>
+            <Nav.Link href="/about" style={{ color: "#E4B7C2",fontFamily: "system-ui" }}>
               About
             </Nav.Link>
-            <Nav.Link href="/contact" style={{ color: "#E4B7C2" }}>
+            <Nav.Link href="/contact" style={{ color: "#E4B7C2", fontFamily: "system-ui" }}>
               Contact
             </Nav.Link>
           </Nav>
