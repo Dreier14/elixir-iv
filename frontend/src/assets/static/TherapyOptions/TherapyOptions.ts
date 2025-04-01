@@ -17,6 +17,7 @@ export const options = [
     ],
     cost: '$350',
     path: '/vitality-drip',
+    alt: "Vitality Cocktail - Boost energy and wellness"
   },
   {
     title: 'Hangover Recovery',
@@ -33,6 +34,7 @@ export const options = [
     ],
     cost: '$250',
     path: '/hangover-recovery',
+    alt: "Hangover Cocktail - Rehydrate and recover fast"
   },
   {
     title: 'Migraine Relief',
@@ -47,10 +49,11 @@ export const options = [
     ],
     cost: '$250',
     path: '/migraine-relief',
+    alt: "Migraine Cocktail - Relief from headaches and migraines"
   },
   {
-    title: 'Meyers Cocktail',
-    description: `The Meyers Cocktail is an IV infusion that combines essential nutrients to support energy, immune function, and overall wellness. It is commonly used to treat fatigue, dehydration, migraines, and stress, providing fast relief and hydration.`,
+    title: 'Myers Cocktail',
+    description: `The Myers Cocktail is an IV infusion that combines essential nutrients to support energy, immune function, and overall wellness. It is commonly used to treat fatigue, dehydration, migraines, and stress, providing fast relief and hydration.`,
     imageUrl: '/images/meyerscocktail.png',
     includes: [
       "Vitamin C",
@@ -63,6 +66,7 @@ export const options = [
     ],
     cost: '$200',
     path: '/meyers-cocktail',
+    alt: "Myers' Cocktail - Essential vitamins for overall health"
   },
   {
     title: 'High-Dose Vitamin C',
@@ -74,6 +78,7 @@ export const options = [
     ],
     cost: '$150 - $600 (varies by dose)',
     path: '/high-dose-vitamin-c',
+    alt: "Vitamin C Infusion - Immune system support"
   },
   {
     title: 'NAD+',
@@ -84,6 +89,7 @@ export const options = [
     ],
     cost: '$1 per mg',
     path: '/nad-boost',
+    alt: "NAD+ Infusion - Cellular repair and anti-aging benefits"
   },
   {
     title: 'Hydration IV',
@@ -94,5 +100,6 @@ export const options = [
     ],
     cost: '$120',
     path: '/hydration-iv',
+    alt: "Hydration Therapy - Rapid fluid replenishment"
   }
 ];

@@ -88,6 +88,8 @@ if (!isProduction) {
   }));
 }
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/robots.txt', (req, res) => {
   res.type('text/plain');
   res.send(`User-agent: *

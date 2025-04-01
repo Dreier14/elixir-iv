@@ -11,6 +11,7 @@ interface InfusionOption {
   includes: string[];
   cost: string;
   path: string;
+  alt: string;
 }
 
 // Ensure the `options` prop is properly typed as an array of `InfusionOption`
@@ -37,7 +38,7 @@ const TherapyOptions: React.FC<TherapyOptionsProps> = ({ options }) => {
         {options.map((option) => (
           <Col lg={4} md={6} sm={12} xs={12} key={option.title} className="d-flex mx-auto">
             <Card className="mb-4 card-container w-100 d-flex flex-column">
-              <Card.Img variant="top" className="card-img" style={{ height: "450px" }} src={option.imageUrl} />
+              <Card.Img variant="top" className="card-img" style={{ height: "450px" }} src={option.imageUrl} alt={option.alt}/>
               <Card.Body className="d-flex flex-column" style={{backgroundColor: '#E4B7C2'}}>
                 <div>
                   <Card.Title style={{ color: '#E4B7C2', fontSize: '32px' }}>{option.title}</Card.Title>
