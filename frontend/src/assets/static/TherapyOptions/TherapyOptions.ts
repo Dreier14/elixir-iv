@@ -17,7 +17,7 @@ export const options = [
     ],
     cost: '$350',
     path: '/vitality-drip',
-    alt: "Vitality Cocktail IV Therapy in Scottsdale, Tempe and Phoenix - Boost energy and wellness"
+    alt: "Vitality Cocktail IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Boost energy and wellness"
   },
   {
     title: 'Hangover Recovery',
@@ -34,7 +34,7 @@ export const options = [
     ],
     cost: '$250',
     path: '/hangover-recovery',
-    alt: "Hangover Cocktail IV Therapy in Scottsdale, Tempe and Phoenix - Rehydrate and recover fast"
+    alt: "Hangover Cocktail IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Rehydrate and recover fast"
   },
   {
     title: 'Migraine Relief',
@@ -49,7 +49,7 @@ export const options = [
     ],
     cost: '$250',
     path: '/migraine-relief',
-    alt: "Migraine IV Therapy in Scottsdale, Tempe and Phoenix - Relief from headaches and migraines"
+    alt: "Migraine IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Relief from headaches and migraines"
   },
   {
     title: 'Myers Cocktail',
@@ -66,7 +66,7 @@ export const options = [
     ],
     cost: '$200',
     path: '/meyers-cocktail',
-    alt: "Myers' Cocktail IV Therapy in Scottsdale, Tempe and Phoenix - Essential vitamins for overall health"
+    alt: "Myers' Cocktail IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Essential vitamins for overall health"
   },
   {
     title: 'High-Dose Vitamin C',
@@ -78,7 +78,7 @@ export const options = [
     ],
     cost: '$150 - $600 (varies by dose)',
     path: '/high-dose-vitamin-c',
-    alt: "Vitamin C IV Therapy in Scottsdale, Tempe and Phoenix - Immune system support"
+    alt: "Vitamin C IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Immune system support"
   },
   {
     title: 'NAD+',
@@ -89,7 +89,7 @@ export const options = [
     ],
     cost: '$1 per mg',
     path: '/nad-boost',
-    alt: "NAD+ IV Therapy in Scottsdale, Tempe and Phoenix - Cellular repair and anti-aging benefits"
+    alt: "NAD+ IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Cellular repair and anti-aging benefits"
   },
   {
     title: 'Hydration IV',
@@ -100,6 +100,6 @@ export const options = [
     ],
     cost: '$120',
     path: '/hydration-iv',
-    alt: "Hydration IV Therapy in Scottsdale, Tempe and Phoenix - Rapid fluid replenishment"
+    alt: "Hydration IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Rapid fluid replenishment"
   }
 ];

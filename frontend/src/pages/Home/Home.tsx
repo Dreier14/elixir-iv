@@ -11,19 +11,22 @@ const Home: React.FC = () => {
   return (
     <div style={{backgroundColor: "#FFF6F5" }}>
       <Seo
-        title="Mobile IV Therapy in Phoenix, Scottsdale & Tempe - Elixir IV"
-        description="Experience top-rated mobile IV therapy in Phoenix, Scottsdale, and Tempe. Our hydration and wellness treatments include NAD+, Myers' Cocktail, and Hangover Relief IVs."
-        keywords="mobile IV therapy Phoenix, Scottsdale IV hydration, Tempe IV therapy, NAD+ IV drip, Myers' Cocktail IV, hangover IV Scottsdale, hydration therapy Phoenix"
+        title="Mobile IV Therapy for Bachelor & Bachelorette Parties in Phoenix, Scottsdale & Tempe - Elixir IV"
+        description="Experience top-rated mobile IV therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa. Perfect for bachelor and bachelorette parties, hydration and wellness treatments include NAD+, Myers' Cocktail, and Hangover Relief IVs."
+        keywords="mobile IV therapy Phoenix, Scottsdale IV hydration, Tempe IV therapy, NAD+ IV drip, Myers' Cocktail IV, hangover IV Scottsdale, hydration therapy Phoenix, bachelor party IV, bachelorette party IV, party recovery IV, Chandler IV, Gilbert IV, Mesa IV"
         schemaData={{
           "@context": "https://schema.org",
           "@type": "MedicalBusiness",
           "name": "Elixir IV",
-          "description": "Premium mobile IV therapy services in Phoenix, Scottsdale, and Tempe. Specializing in hydration therapy, vitamin infusion, and wellness IV drips.",
+          "description": "Premium mobile IV therapy services in Phoenix, Scottsdale, and Tempe. Specializing in hydration therapy, vitamin infusion, wellness IV drips, and party recovery IVs for bachelor and bachelorette parties.",
           "url": "https://elixirivtherapy.com/",
           "serviceArea": [
             { "@type": "City", "name": "Phoenix" },
             { "@type": "City", "name": "Scottsdale" },
-            { "@type": "City", "name": "Tempe" }
+            { "@type": "City", "name": "Tempe" },
+            { "@type": "City", "name": "Chandler" },
+            { "@type": "City", "name": "Gilbert" },
+            { "@type": "City", "name": "Mesa" },
           ],
           "offers": {
             "@type": "Offer",

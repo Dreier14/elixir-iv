@@ -1,6 +1,6 @@
 .hero-section {
     background-color: #E4B7C2;
-    color: white;
+    color: #FFF6F5;
     padding-bottom: 20px;
     text-align: center;
     transition: background-color 0.3s ease;
@@ -12,6 +12,23 @@
     display: flex; /* Flexbox to center the image */
     justify-content: center; /* Center image horizontally */
     margin-left: calc(-50vw + 50%); /* This ensures the white band stretches across the full width */
+  }
+
+  .hero-text {
+    font-size: 1.2rem;
+    color: #FFF6F5;
+    line-height: 1.6;
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    color: #FFF6F5;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
   }
   
   /* Move the h1 up using negative margin */

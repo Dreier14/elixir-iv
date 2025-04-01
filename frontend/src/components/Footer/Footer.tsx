@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             </p>
           </Col>
           <Col md={6}>
-            <p style={{ color: '#FFF6F5', fontFamily: "system-ui" }}>Your trusted mobile IV therapy provider in Scottsdale, Tempe, and Phoenix. Hydration, wellness, and vitamin therapy at your doorstep.</p>
+            <p style={{ color: '#FFF6F5', fontFamily: "system-ui" }}>Your trusted mobile IV therapy provider in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa. Hydration, wellness, and vitamin therapy at your doorstep.</p>
             <h5 style={{ color: '#FFF6F5', fontFamily: "system-ui", letterSpacing: "5px"}}>ELIXIR IV</h5>
           </Col>
         </Row>
