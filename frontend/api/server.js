@@ -88,6 +88,14 @@ if (!isProduction) {
   }));
 }
 
+app.use('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send(`User-agent: *
+  Disallow: /admin
+  Allow: /
+  Sitemap: https://elixirivtherapy.com/sitemap.xml`);
+});
+
 // SSR Handler
 app.get('*', async (req, res) => {
   try {
