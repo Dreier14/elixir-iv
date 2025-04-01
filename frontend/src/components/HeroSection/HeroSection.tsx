@@ -6,7 +6,6 @@ import './HeroSection.css';
 const HeroSection: React.FC = () => {
   return (
     <div className="hero-section">
-      <h1 style={{color: "#FFF6F5", fontSize: '52px'}}>ELIXIR IV</h1>
       <div className="image-band">
         <img src="/images/ElixirIVLogo.png" alt="Elixir IV Logo" className="hero-logo" />
       </div>

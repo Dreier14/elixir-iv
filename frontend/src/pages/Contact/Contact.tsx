@@ -51,10 +51,7 @@ const Contact: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: "#FFF6F5", width: "100%", minHeight: "100vh" }}>
-      <div style={{ backgroundColor: "#E4B7C2", width: "100%", padding: "20px 0", textAlign: "center" }}>
-        <h1 style={{ color: "#FFF6F5", margin: 0, fontSize: '52px' }}>Contact Us</h1>
-      </div>
-
+      <h1 style={{ color:  "#E4B7C2", margin: 0, fontSize: '52px', textAlign: "center" }}>Contact Us</h1>
       <Container className="contact-container mt-4">
         <Seo
           title="Contact Us - Elixir IV"
