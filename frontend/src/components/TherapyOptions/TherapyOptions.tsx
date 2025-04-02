@@ -65,7 +65,7 @@ const TherapyOptions: React.FC<TherapyOptionsProps> = ({ options }) => {
                 <div className="mb-1 mt-1 cost-text"><strong>{option.cost}</strong></div>
                 <Button
                   variant="outline-light"
-                  className="hero-button"
+                  className="hero-button w-100"
                   onClick={() => handleSelectService(option.title)}
                 >
                   <FaSms /> Select This Service

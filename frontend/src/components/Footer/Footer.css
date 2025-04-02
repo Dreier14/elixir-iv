@@ -3,32 +3,37 @@
     background-color: #E4B7C2;
     color: white;
     padding: 20px 0;
-  }
-  
-  .footer-link {
+}
+
+.footer-link {
     color: #FFF6F5;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
-  }
-  
-  .footer-link:hover {
+}
+
+.footer-link:hover {
     color: #ffffff;
     text-decoration: underline;
-  }
-  
-  .footer-description {
+}
+
+.footer-description {
     color: #FFF6F5;
     font-family: system-ui, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-  }
-  
-  .footer-title {
+}
+
+.footer-title {
     color: #FFF6F5;
     font-family: system-ui, sans-serif;
     letter-spacing: 5px;
     font-weight: bold;
     margin-top: 10px;
-  }
-  
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #FFF6F5;
+    transition: color 0.3s;
+}
