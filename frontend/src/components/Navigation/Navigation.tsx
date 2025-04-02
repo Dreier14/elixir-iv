@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
   }, [handleClickOutside, isOpen]);
 
   return (
-    <Navbar style={{ backgroundColor: "#FFF6F5" }} expand="lg">
+    <Navbar style={{ backgroundColor: "#FFF6F5" }} expand="lg" sticky="top">
       <Container fluid>
         <Navbar.Brand href="/" style={{ color: "#E4B7C2", fontFamily: "system-ui", letterSpacing: "5px" }}>
           <img 
