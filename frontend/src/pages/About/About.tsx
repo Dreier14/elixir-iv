@@ -32,9 +32,9 @@ const About: React.FC<AboutProps> = ({ data }) => {
           {data.map((item, index) => (
             <Col md={4} sm={12} className="animate-fade-in" key={index}>
               <Card className="mb-4 card-container">
-                <Card.Body className="card-body">
+                <Card.Img variant="top" className="card-img" style={{ borderRadius: '5px 5px 0px 0px' }} src={item.imageUrl} />
+                <Card.Body className="card-body" style={{ borderRadius: '0px 0px 5px 5px' }}>
                   <Card.Title className="card-title">{item.title}</Card.Title>
-                  <Card.Img variant="top" className="card-img" src={item.imageUrl} />
                   <Card.Text className="mt-4 card-text">{item.text}</Card.Text>
                 </Card.Body>
               </Card>

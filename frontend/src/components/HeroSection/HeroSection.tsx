@@ -9,7 +9,6 @@ const HeroSection: React.FC = () => {
       <div className="image-band">
         <img src="/images/ElixirIVLogo.png" alt="Elixir IV Logo" className="hero-logo" />
       </div>
-
       <Container className="text-center text-button-group">
         <Row className="justify-content-center">
           <Col lg={8}>
@@ -23,16 +22,14 @@ const HeroSection: React.FC = () => {
             </p>
           </Col>
         </Row>
-
-        {/* Button Group */}
         <Row className="justify-content-center mt-3">
-          <Col md="auto">
-            <Button href="sms:+14804204359" variant="outline-light" className="hero-button">
+          <Col xs={12} md="auto">
+            <Button href="sms:+14804204359" variant="outline-light" className="hero-button w-100 w-md-auto">
               <FaSms /> Text Us
             </Button>
           </Col>
-          <Col md="auto">
-            <Button href="tel:+14804204359" variant="outline-light" className="hero-button">
+          <Col xs={12} md="auto" className="mt-2 mt-md-0">
+            <Button href="tel:+14804204359" variant="outline-light" className="hero-button w-100 w-md-auto">
               <FaPhoneAlt /> Call Us 
             </Button>
           </Col>
