@@ -14,7 +14,7 @@ import { Card, Row, Col } from 'react-bootstrap';
 const AddOnItems: React.FC<AdditionalItemProps> = ({options}) => {
   return (
     <div className="therapy-options-container">
-      <h1 className="therapy-options-title">Additional Items</h1>
+      <h1 className="therapy-options-title">Add on items</h1>
       <Row className="card-row mb-4">
         {options.map((option) => (
             <Col lg={4} md={6} sm={12} xs={12} key={option.title} className="d-flex mx-auto">

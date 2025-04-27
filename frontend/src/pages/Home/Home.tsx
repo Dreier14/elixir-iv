@@ -10,7 +10,7 @@ import Seo from '../../components/Seo/Seo';
 import AddOnItems from '../../components/AddOnItems/AddOnItems';
 
 //assets
-import { additionalItems } from '../../assets/static/AdditionalItems/AdditionalItems';
+import { addOnItems } from '../../assets/static/AddOnItems/AddOnItems';
 import { options } from '../../assets/static/TherapyOptions/TherapyOptions';
 
 const Home: React.FC = () => {
@@ -62,7 +62,7 @@ const Home: React.FC = () => {
             </Col>
           </Row>
           <Row>
-            <AddOnItems options={additionalItems}/>
+            <AddOnItems options={addOnItems}/>
           </Row>
         </Container>
       </section>

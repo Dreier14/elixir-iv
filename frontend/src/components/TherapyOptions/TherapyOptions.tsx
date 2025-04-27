@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import { FaSms } from 'react-icons/fa';
+
+import { IInfusionOption } from '../../interfaces/IInfusionOptions';
+
 import './TherapyOptions.css';
 
-// Define a type for the infusion options data
-interface InfusionOption {
-  title: string;
-  description: string;
-  imageUrl: string;
-  includes: string[];
-  cost: string;
-  path: string;
-  alt: string;
-}
-
 // Ensure the `options` prop is properly typed as an array of `InfusionOption`
-interface TherapyOptionsProps {
-  options: InfusionOption[];  // This ensures options is an array
+interface ITherapyOptionsProps {
+  options: IInfusionOption[];  // This ensures options is an array
 }
 
-const TherapyOptions: React.FC<TherapyOptionsProps> = ({ options }) => {
+const TherapyOptions: React.FC<ITherapyOptionsProps> = ({ options }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
