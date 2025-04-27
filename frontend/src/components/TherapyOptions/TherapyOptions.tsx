@@ -41,7 +41,6 @@ const TherapyOptions: React.FC<TherapyOptionsProps> = ({ options }) => {
   return (
     <div className="therapy-options-container">
       <h1 className="therapy-options-title">Our IV Therapy Options</h1>
-
       <Row className="card-row mb-4">
         {options.map((option) => (
           <Col lg={4} md={6} sm={12} xs={12} key={option.title} className="d-flex mx-auto">

@@ -2,7 +2,7 @@ export const aboutSections = [
     {
       title: 'Our Mission',
       text: 'We are committed to delivering high-quality IV therapy services directly to your home, ensuring comfort, convenience, and personalized care. Our goal is to help you feel your best with treatments designed for hydration, wellness, and recovery.',
-      imageUrl: '/images/Kayla.webp', // Placeholder image for "Our Mission"
+      imageUrl: '/images/Kayla.webp',
     },
     {
       title: 'Our Expertise',

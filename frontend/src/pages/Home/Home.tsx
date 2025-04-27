@@ -1,11 +1,17 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+
+//components
 import HeroSection from '../../components/HeroSection/HeroSection';
 import IVRecommendationPrompt from '../../components/IVRecommendationPrompt/IVRecommendationPrompt';
 import NeedleFearHighlight from '../../components/NeedleFearHighlight/NeedleFearHighlight';
 import TherapyOptions from '../../components/TherapyOptions/TherapyOptions';
-import { options } from '../../assets/static/TherapyOptions/TherapyOptions';
 import Seo from '../../components/Seo/Seo';
+import AddOnItems from '../../components/AddOnItems/AddOnItems';
+
+//assets
+import { additionalItems } from '../../assets/static/AdditionalItems/AdditionalItems';
+import { options } from '../../assets/static/TherapyOptions/TherapyOptions';
 
 const Home: React.FC = () => {
   return (
@@ -54,6 +60,9 @@ const Home: React.FC = () => {
             <Col md={12}>
             <TherapyOptions options={options} />
             </Col>
+          </Row>
+          <Row>
+            <AddOnItems options={additionalItems}/>
           </Row>
         </Container>
       </section>

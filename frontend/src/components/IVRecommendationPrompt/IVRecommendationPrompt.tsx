@@ -12,18 +12,6 @@ interface Option {
 // Define options with relevant keywords
 const options: Option[] = [
   {
-    title: 'Vitality Drip',
-    description: 'An energizing and rejuvenating IV infusion for wellness and recovery.',
-    cost: '$350',
-    keywords: ['energy', 'immune support', 'hydration', 'detoxification', 'recovery'],
-  },
-  {
-    title: 'Hangover Recovery',
-    description: 'Rehydrates the body and alleviates symptoms like nausea and fatigue after alcohol consumption.',
-    cost: '$250',
-    keywords: ['hangover', 'hungover','nausea', 'fatigue', 'rehydration', 'electrolytes'],
-  },
-  {
     title: 'Migraine Relief',
     description: 'Helps relieve migraine symptoms and inflammation while replenishing essential nutrients.',
     cost: '$250',
@@ -33,25 +21,25 @@ const options: Option[] = [
     title: 'Myers Cocktail',
     description: 'Combines essential nutrients to support energy, immune function, and overall wellness.',
     cost: '$200',
-    keywords: ['energy boost', 'hydration', 'fatigue', 'stress reduction', 'wellness'],
+    keywords: ['energy boost', 'hydration', 'fatigue', 'stress reduction', 'wellness', 'hungover'],
   },
   {
     title: 'High-Dose Vitamin C',
     description: 'Boosts the immune system and promotes detoxification.',
     cost: '$150 - $600',
-    keywords: ['immune support', 'detox', 'healing', 'anti-inflammatory'],
+    keywords: ['immune support', 'detox', 'healing', 'anti-inflammatory', 'sickness', 'sick'],
   },
   {
     title: 'NAD+',
     description: 'Boosts energy and improves cognitive function and cellular repair.',
     cost: '$1 per mg',
-    keywords: ['anti-aging', 'cognitive', 'energy', 'cellular repair'],
+    keywords: ['anti-aging', 'cognitive', 'energy', 'cellular repair', 'recovery'],
   },
   {
     title: 'Hydration IV',
     description: 'Restores fluids and electrolytes for overall hydration balance.',
     cost: '$120',
-    keywords: ['hydration', 'electrolyte balance', 'fatigue', 'dehydration'],
+    keywords: ['hydration', 'electrolyte balance', 'fatigue', 'dehydration', 'recovery', 'hungover'],
   }
 ];
 
@@ -63,7 +51,18 @@ const getKeywordsForFeeling = (feeling: string): string[] => {
     dehydrated: ['hydration', 'electrolyte balance', 'fatigue', 'hungover'],
     nauseous: ['nausea', 'hydration', 'pain relief'],
     stressed: ['stress reduction', 'wellness', 'energy boost'],
-    immune: ['immune support', 'detox', 'healing'],
+    immune: ['immune support', 'detox', 'healing', 'sick', 'sickness'],
+    hungover: ['hydration', 'fatigue', 'recovery', 'nausea', 'energy boost'],
+    sick: ['immune support', 'detox', 'healing', 'sick', 'sickness'],
+    inflammation: ['inflammation', 'pain relief', 'migraine', 'nausea'],
+    recovery: ['recovery', 'energy', 'cognitive', 'cellular repair', 'anti-aging'],
+    antiaging: ['anti-aging', 'cognitive', 'energy', 'cellular repair', 'recovery'],
+    wellness: ['wellness', 'energy boost', 'hydration', 'fatigue', 'stress reduction'],
+    energy: ['energy boost', 'hydration', 'fatigue', 'stress reduction', 'wellness'],
+    hydration: ['hydration', 'electrolyte balance', 'fatigue', 'dehydration', 'recovery'],
+    fatigue: ['energy', 'fatigue', 'recovery', 'hydration', 'stress reduction'],
+    stress: ['stress reduction', 'wellness', 'energy boost', 'hydration', 'fatigue'],
+    pain: ['pain relief', 'inflammation', 'migraine', 'nausea'],
   };
 
   // Normalize input and match the keywords
@@ -125,14 +124,14 @@ const IVRecommendationPrompt: React.FC = () => {
         <Row className="justify-content-center mt-4">
           {recommendedOptions.length > 0 && (
             <>
-              <h3 className="mb-4">We recommend the following IV options for you:</h3>
+              <h3 className="mb-4" style={{color: '#E4B7C2'}}>We recommend the following IV options for you:</h3>
               {recommendedOptions.map((opt) => (
                 <Col md={4} sm={6} key={opt.title} className="mb-3">
                   <Card className="shadow">
                     <Card.Body>
                       <Card.Title>{opt.title}</Card.Title>
                       <Card.Text>{opt.description}</Card.Text>
-                      <Card.Text className="text-muted">Cost: {opt.cost}</Card.Text>
+                      <div className="mb-1 mt-1 cost-text"><strong>{opt.cost}</strong></div>
                     </Card.Body>
                   </Card>
                 </Col>

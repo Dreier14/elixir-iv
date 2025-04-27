@@ -1,47 +1,9 @@
 export const options = [
   {
-    title: 'Vitality Drip',
-    description: `The Vitality Drip is an energizing and rejuvenating IV infusion that supports overall wellness by enhancing immune function and improving hydration. It is designed to boost energy, promote detoxification, and help with recovery, leaving you feeling refreshed and revitalized.`,
-    imageUrl: '/images/VitalityCocktail.webp',
-    includes: [
-      "Vitamin C",
-      "Zinc",
-      "Magnesium",
-      "B Complex",
-      "B12",
-      "Taurine",
-      "Amino Blend",
-      "Lysine",
-      "Glutathione (IVP after infusion)",
-      "Normal Saline"
-    ],
-    cost: '$350',
-    path: '/vitality-drip',
-    alt: "Vitality Cocktail IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Boost energy and wellness"
-  },
-  {
-    title: 'Hangover Recovery',
-    description: `The Hangover Cocktail is an IV infusion designed to quickly rehydrate the body, replenish lost nutrients, and alleviate symptoms like nausea, headache, and fatigue after alcohol consumption. It helps restore electrolyte balance and boost energy levels for faster recovery.`,
-    imageUrl: '/images/HangoverCocktail.webp',
-    includes: [
-      "Anti-Pain Medicine (Toradol)",
-      "Vitamin C",
-      "B-Complex",
-      "B12",
-      "Pepcid",
-      "Glutathione (IVP after infusion)",
-      "Normal Saline"
-    ],
-    cost: '$250',
-    path: '/hangover-recovery',
-    alt: "Hangover Cocktail IV Therapy in Scottsdale, Tempe, Chandler, Gilbert, Phoenix & Mesa - Rehydrate and recover fast"
-  },
-  {
     title: 'Migraine Relief',
     description: `The Migraine Cocktail is an IV infusion designed to relieve migraine symptoms by replenishing essential vitamins and minerals that help reduce pain and inflammation. It provides fast relief by addressing dehydration, nutrient deficiencies, and muscle tension often associated with migraines.`,
     imageUrl: '/images/MigraineCocktail.webp',
     includes: [
-      "Normal Saline",
       "Anti-Pain Medicine (Toradol)",
       "Anti-Nausea Medicine (Zofran)",
       "Magnesium",
@@ -56,13 +18,11 @@ export const options = [
     description: `The Myers Cocktail is an IV infusion that combines essential nutrients to support energy, immune function, and overall wellness. It is commonly used to treat fatigue, dehydration, migraines, and stress, providing fast relief and hydration.`,
     imageUrl: '/images/meyerscocktail.webp',
     includes: [
-      "Vitamin C",
       "Vitamin B Complex",
       "Vitamin B12",
-      "Zinc",
+      "Vitamin C",
+      "Calcium",
       "Magnesium",
-      "Glutathione (IVP after infusion)",
-      "Normal Saline"
     ],
     cost: '$200',
     path: '/meyers-cocktail',
@@ -74,7 +34,6 @@ export const options = [
     imageUrl: '/images/VitaminC.webp',
     includes: [
       "Vitamin C",
-      "Normal Saline"
     ],
     cost: '$150 - $600 (varies by dose)',
     path: '/high-dose-vitamin-c',

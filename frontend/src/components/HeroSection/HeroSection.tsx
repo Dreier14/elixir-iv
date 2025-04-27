@@ -11,13 +11,13 @@ const HeroSection: React.FC = () => {
       </div>
       <Container className="text-center text-button-group">
         <Row className="justify-content-center">
-          <Col lg={8} sm={10}>
+          <Col lg={7} className='mx-auto'>
             <h1 className="hero-title">
               Mobile IV Therapy in Scottsdale, Tempe, Phoenix, Chandler, Gilbert & Mesa
             </h1>
             <p className="hero-text">
               Get the best hydration, vitamin, and wellness IV treatments delivered to your door in Scottsdale, Tempe, Phoenix, Chandler, Gilbert, and Mesa.
-              Whether you need a NAD+ infusion, a Hangover Relief IV, or a Myers' Cocktail, we've got you covered.
+              Whether you need a NAD+ infusion, Vitamin C, Hydation or a Myers Cocktail, we've got you covered.
               Your trusted partner for home-based IV therapy. We bring health and wellness to you.
             </p>
           </Col>
@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
               <a href="https://www.facebook.com/share/1ACpaBPJkc/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FaFacebook className="social-icon me-3" />
               </a>
-              <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <a href="https://youtube.com/elixirivtherapy" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <FaYoutube className="social-icon me-3" />
               </a>
             </div>
