@@ -12,7 +12,6 @@ import { Card, Row, Col } from 'react-bootstrap';
   }
 
 const AddOnItems: React.FC<AdditionalItemProps> = ({options}) => {
-    console.log("AddOnItems options:", options);
   return (
     <div className="therapy-options-container">
       <h1 className="therapy-options-title">Additional Items</h1>

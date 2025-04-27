@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container, Row, Col, Card, Spinner } from 'react-bootstrap';
+import TypingPlaceholderInput from '../TypingPlaceholderInput/TypingPlaceholderInput';
 
 // Define types for options
 interface Option {
@@ -104,13 +105,7 @@ const IVRecommendationPrompt: React.FC = () => {
   return (
     <Container className="text-center my-5" style={{backgroundColor: "#FFF6F5" }}>
       <h2 className="mb-4" style={{color: '#E4B7C2'}}>How are you feeling today?</h2>
-      <input
-        type="text"
-        placeholder="Describe your symptoms or feelings (e.g., tired, headache, stressed)"
-        value={userFeeling}
-        onChange={(e) => setUserFeeling(e.target.value)}
-        className="form-control mb-4"
-      />
+      <TypingPlaceholderInput userFeeling={userFeeling} setUserFeeling={setUserFeeling} />
       <Button onClick={handleUserFeeling} className="btn btn-primary" style={{ backgroundColor: '#E4B7C2', borderColor: '#E4B7C2', fontWeight: 'bold'}}>
         Get Recommendations
       </Button>
