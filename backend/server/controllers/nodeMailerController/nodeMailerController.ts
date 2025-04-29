@@ -16,8 +16,17 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
         },
     });
 
-    if (firstName === "" || lastName === "" || email === "" || phoneNumber === "") {
-        return res.status(400).json({ error: "Please fill out all fields." });
+    const isInvalid = (value: any) => {
+        return value === null || value === undefined || value.toString().trim() === "";
+    };
+    
+    if (
+        isInvalid(firstName) ||
+        isInvalid(lastName) ||
+        isInvalid(email) ||
+        isInvalid(phoneNumber)
+    ) {
+        return res.status(400).json({ error: "Please fill out all required fields." });
     }
 
     console.log(`Sending email to Elixir IV from ${firstName} ${lastName}, with email: ${email}, phone number: ${phoneNumber}`);
