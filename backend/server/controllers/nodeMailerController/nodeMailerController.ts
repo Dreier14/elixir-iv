@@ -20,6 +20,8 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
         return res.status(400).json({ error: "Please fill out all fields." });
     }
 
+    console.log(`Sending email to Elixir IV from ${firstName} ${lastName}, with email: ${email}, phone number: ${phoneNumber}`);
+
     const messageData: Record<string, string | undefined> = {
         replyTo: email,
         to: NODE_MAILER_EMAIL,
