@@ -16,6 +16,10 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
         },
     });
 
+    if (firstName === "" || lastName === "" || email === "" || phoneNumber === "") {
+        return res.status(400).json({ error: "Please fill out all fields." });
+    }
+
     const messageData: Record<string, string | undefined> = {
         replyTo: email,
         to: NODE_MAILER_EMAIL,
@@ -23,7 +27,7 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
         text: `
     To Elixir IV,
 
-    My name is ${firstName} ${lastName}, and I am interested in ${service? "the " + service + " service" : "learning about more therapies"}.
+    My name is ${firstName} ${lastName}, and I am interested in ${service ? "the " + service + " service" : "learning about more therapies"}.
 
     Please contact me at ${email} or ${phoneNumber} to discuss further details.
 
